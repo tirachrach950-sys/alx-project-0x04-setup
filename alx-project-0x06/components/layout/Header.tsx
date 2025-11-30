@@ -1,24 +1,32 @@
-"use client";
-
+import Link from "next/link";
+import Button from "../common/Button";
+import { usePathname } from "next/navigation";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
-import Link from "next/link";
 
-const Header = () => {
+const Header: React.FC = () => {
+  const pathname = usePathname();
   const count = useSelector((state: RootState) => state.counter.value);
 
   return (
-    <header className="bg-gray-800 text-white p-4 flex justify-between">
-      <Link href="/">Home</Link>
-
-      <nav className="flex gap-4">
-        <Link href="/counter-app">Counter App</Link>
-      </nav>
-
-      <span>Counter: {count}</span>
+    <header className="fixed w-full bg-white shadow-md">
+      <div className="container mx-auto flex justify-between items-center py-6 px-4 md:px-8">
+        <Link href="/" className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight">
+          Splash App
+        </Link>
+        <div className="flex gap-4">
+          {!["/counter-app"].includes(pathname) ? (
+            <>
+              <Button buttonLabel="Sign In" buttonBackgroundColor="red" />
+              <Button buttonLabel="Sign Up" buttonBackgroundColor="blue" />
+            </>
+          ) : (
+            <p className="font-semibold text-lg">Current count: {count}</p>
+          )}
+        </div>
+      </div>
     </header>
   );
 };
 
 export default Header;
-
