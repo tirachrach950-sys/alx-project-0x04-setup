@@ -1,16 +1,17 @@
 import Link from "next/link";
 import Button from "../common/Button";
 import { usePathname } from "next/navigation";
-import { useCount } from "@/context/CountContext";
+import { useCount } from "@/context/CountContext"; // Make sure this path is correct
 
 const Header: React.FC = () => {
   const pathname = usePathname();
-  const { count } = useCount(); // Global state
+  const { count } = useCount(); // get global state from Context API
 
   return (
     <header className="fixed w-full bg-white shadow-md">
       <div className="container mx-auto flex justify-between items-center py-6 px-4 md:px-8">
-        {/* Logo */}
+        
+        {/* Logo / Title */}
         <Link
           href="/"
           className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight"
@@ -18,7 +19,7 @@ const Header: React.FC = () => {
           Splash App
         </Link>
 
-        {/* Buttons / Counter */}
+        {/* Right side buttons or counter */}
         <div className="flex gap-4">
           {pathname !== "/counter-app" ? (
             <>
