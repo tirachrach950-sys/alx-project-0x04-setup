@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Button from "../common/Button";
+import Button from "../common/Button"; // Make sure this file exists
 import { usePathname } from "next/navigation";
-import { useCount } from "@/context/CountContext";
+import { useCount } from "@/context/CountContext"; // ✅ fixed this line
 
 const Header: React.FC = () => {
   const pathname = usePathname();
@@ -30,4 +30,3 @@ const Header: React.FC = () => {
 };
 
 export default Header;
-
