@@ -5,13 +5,12 @@ import { useCount } from "@/context/CountContext";
 
 const Header: React.FC = () => {
   const pathname = usePathname();
-  const { count } = useCount(); // Get count from Context API
+  const { count } = useCount(); // Global state
 
   return (
     <header className="fixed w-full bg-white shadow-md">
       <div className="container mx-auto flex justify-between items-center py-6 px-4 md:px-8">
-
-        {/* Logo / Title */}
+        {/* Logo */}
         <Link
           href="/"
           className="text-3xl md:text-5xl font-bold text-gray-800 tracking-tight"
@@ -19,7 +18,7 @@ const Header: React.FC = () => {
           Splash App
         </Link>
 
-        {/* Right side buttons or count display */}
+        {/* Buttons / Counter */}
         <div className="flex gap-4">
           {pathname !== "/counter-app" ? (
             <>
@@ -32,7 +31,6 @@ const Header: React.FC = () => {
             </p>
           )}
         </div>
-
       </div>
     </header>
   );
